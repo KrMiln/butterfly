@@ -454,20 +454,24 @@ include 'common/header_start.php';
       html += '</tbody></table></div>';
       $('#contacts-list').html(html);
     }
-    $.ajax({
-      url: 'get_all_contacts.php',
-      method: 'GET',
-      dataType: 'json',
-      success: function(response) {
-        if (response.success) {
-          renderContacts(response.contacts);
-        } else {
-          $('#contacts-list').html('<div class="alert alert-danger">Error: ' + response.error + '</div>');
+    function loadContacts() {
+      $.ajax({
+        url: 'get_contacts.php',
+        method: 'GET',
+        dataType: 'json',
+        success: function(response) {
+          if (response.success) {
+            renderContacts(response.contacts);
+          } else {
+            $('#contacts-list').html('<div class="alert alert-danger">Error: ' + response.error + '</div>');
+          }
+        },
+        error: function() {
+          $('#contacts-list').html('<div class="alert alert-danger">Could not load messages.</div>');
         }
-      },
-      error: function() {
-        $('#contacts-list').html('<div class="alert alert-danger">Could not load messages.</div>');
-      }
-    });
+      });
+    }
+    loadContacts(); 
+    setInterval(loadContacts, 2000); 
   });
 </script>
