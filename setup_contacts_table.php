@@ -10,7 +10,7 @@ $username = 'butterfly_u';
 $pass = 'TL8EHuw9STlnQVA';
 
 // Connect to MySQL
-$conn = new mysqli($host, $user, $pass, $dbname);
+$conn = new mysqli($host, $username, $pass, $dbname);
 
 // Check connection
 if ($conn->connect_error) {
