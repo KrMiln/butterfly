@@ -5,12 +5,12 @@ error_reporting(E_ALL);
 
 // Database configuration
 $host = 'localhost';
-$dbname = 'butterfly_db';
+$db = 'butterfly_db';
 $username = 'butterfly_u';
 $pass = 'TL8EHuw9STlnQVA';
 
 // Connect to MySQL
-$conn = new mysqli($host, $user, $pass, $dbname);
+$conn = new mysqli($host, $user, $pass, $db);
 
 // Check connection
 if ($conn->connect_error) {
