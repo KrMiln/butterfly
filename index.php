@@ -447,11 +447,21 @@ include 'common/header_start.php';
         $('#contacts-list').html('<div class="alert alert-info text-center">No messages found.</div>');
         return;
       }
-      let html = '<div class="table-responsive"><table class="table table-bordered table-striped"><thead><tr><th>Name</th><th>Email</th><th>Message</th></tr></thead><tbody>';
+      let html = '<div class="row g-3">';
       contacts.forEach(function(contact) {
-        html += `<tr><td>${contact.name}</td><td>${contact.email}</td><td>${contact.message}</td></tr>`;
+        html += `
+          <div class="col-md-6 col-lg-4">
+            <div class="card contact-card shadow-sm mb-2">
+              <div class="card-body">
+                <h5 class="card-title mb-1">${contact.name}</h5>
+                <p class="card-text small text-muted mb-2">${contact.email}</p>
+                <p class="card-text">${contact.message}</p>
+              </div>
+            </div>
+          </div>
+        `;
       });
-      html += '</tbody></table></div>';
+      html += '</div>';
       $('#contacts-list').html(html);
     }
     function loadContacts() {
@@ -475,3 +485,21 @@ include 'common/header_start.php';
     setInterval(loadContacts, 2000); 
   });
 </script>
+<style>
+  .contact-card {
+    border-radius: 1rem;
+    background: #f8fafc;
+    border: 1px solid #e3e3e3;
+    transition: box-shadow 0.2s;
+  }
+  .contact-card:hover {
+    box-shadow: 0 0.5rem 1.5rem rgba(0,0,0,0.08);
+  }
+  .contact-card .card-title {
+    font-weight: 600;
+    color: #0d6efd;
+  }
+  .contact-card .card-text {
+    margin-bottom: 0.5rem;
+  }
+</style>
