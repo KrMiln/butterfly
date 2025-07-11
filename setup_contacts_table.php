@@ -1,9 +1,9 @@
 <?php
 // Database configuration
 $host = 'localhost';
-$dbname = 'grayscale_db';
-$user = 'grayscale_u';
-$pass = '9dSCEu3W16tJTDT';
+$dbname = 'butterfly_db';
+$username = 'butterfly_u';
+$pass = 'TL8EHuw9ST1nQVA';
 
 // Connect to MySQL
 $conn = new mysqli($host, $user, $pass, $db);
