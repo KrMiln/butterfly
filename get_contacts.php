@@ -3,7 +3,7 @@ header('Content-Type: application/json');
 $host = 'localhost';
 $dbname = 'butterfly_db';
 $username = 'butterfly_u';
-$password = 'TL8EHuw9ST1nQVA';
+$password = 'TL8EHuw9STlnQVA';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

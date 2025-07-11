@@ -3,7 +3,7 @@
 $host = 'localhost';
 $dbname = 'butterfly_db';
 $username = 'butterfly_u';
-$pass = 'TL8EHuw9ST1nQVA';
+$pass = 'TL8EHuw9STlnQVA';
 
 // Connect to MySQL
 $conn = new mysqli($host, $user, $pass, $db);
