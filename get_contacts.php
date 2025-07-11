@@ -1,9 +1,9 @@
 <?php
 header('Content-Type: application/json');
 $host = 'localhost';
-$dbname = 'test_base';
-$username = 'root';
-$password = '';
+$dbname = 'butterfly_db';
+$username = 'butterfly_u';
+$password = 'TL8EHuw9ST1nQVA';
 
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

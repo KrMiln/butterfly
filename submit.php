@@ -8,9 +8,9 @@ if(empty($name) || empty($email) || empty($message)) {
 }
 
 $host = 'localhost';
-$dbname = 'test_base';
-$username = 'root';
-$pass = '';
+$dbname = 'butterfly_db';
+$username = 'butterfly_u';
+$pass = 'TL8EHuw9ST1nQVA';
 
 $conn = mysqli_connect($host, $username, $pass, $dbname);
 
