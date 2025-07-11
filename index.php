@@ -447,11 +447,27 @@ include 'common/header_start.php';
         $('#contacts-list').html('<div class="alert alert-info text-center">No messages found.</div>');
         return;
       }
-      let html = '<div class="table-responsive"><table class="table table-bordered table-striped"><thead><tr><th>Name</th><th>Email</th><th>Message</th></tr></thead><tbody>';
+      let html = '<div class="row g-4">';
       contacts.forEach(function(contact) {
-        html += `<tr><td>${contact.name}</td><td>${contact.email}</td><td>${contact.message}</td></tr>`;
+        // Use first letter of name as avatar
+        let avatar = contact.name ? contact.name.charAt(0).toUpperCase() : '?';
+        html += `
+          <div class="col-md-6 col-lg-4">
+            <div class="contact-card card border-0 shadow-lg position-relative h-100">
+              <div class="card-accent position-absolute top-0 start-0 w-100" style="height:6px;background:linear-gradient(90deg,#0d6efd 60%,#20c997 100%);border-radius:1rem 1rem 0 0;"></div>
+              <div class="card-body pt-4 pb-3 d-flex flex-column align-items-center">
+                <div class="contact-avatar mb-2">
+                  <span>${avatar}</span>
+                </div>
+                <h5 class="card-title mb-1 text-center">${contact.name}</h5>
+                <p class="card-text small text-muted mb-2 text-center"><i class="bi bi-envelope me-1"></i>${contact.email}</p>
+                <p class="card-text text-center">${contact.message}</p>
+              </div>
+            </div>
+          </div>
+        `;
       });
-      html += '</tbody></table></div>';
+      html += '</div>';
       $('#contacts-list').html(html);
     }
     function loadContacts() {
@@ -475,3 +491,46 @@ include 'common/header_start.php';
     setInterval(loadContacts, 2000); 
   });
 </script>
+<style>
+  .contact-card {
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 0 0.5rem 1.5rem rgba(13,110,253,0.08);
+    overflow: hidden;
+    position: relative;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .contact-card:hover {
+    box-shadow: 0 1rem 2rem rgba(32,201,151,0.12);
+    transform: translateY(-4px) scale(1.03);
+  }
+  .contact-card .card-accent {
+    border-radius: 1rem 1rem 0 0;
+  }
+  .contact-avatar {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg,#0d6efd 60%,#20c997 100%);
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(13,110,253,0.10);
+    margin-bottom: 0.5rem;
+  }
+  .contact-card .card-title {
+    font-weight: 600;
+    color: #0d6efd;
+    margin-bottom: 0.25rem;
+  }
+  .contact-card .card-text {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+  .contact-card .card-text.small {
+    font-size: 0.95rem;
+  }
+</style>
